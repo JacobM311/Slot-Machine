@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bbt6ej8kljwj7"]
 
-[ext_resource type="Script" path="res://SlotController.cs" id="1_grtg8"]
+[ext_resource type="Script" path="res://Scripts/SlotController.cs" id="1_grtg8"]
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("text")]
 script = ExtResource("1_grtg8")
@@ -11,3 +11,5 @@ offset_right = 1153.0
 offset_bottom = 654.0
 theme_override_font_sizes/normal_font_size = 80
 text = "hello"
+
+[node name="MongoDB" type="Node2D" parent="."]
