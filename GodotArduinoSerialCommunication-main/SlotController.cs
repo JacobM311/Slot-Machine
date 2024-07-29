@@ -27,9 +27,9 @@ public partial class SlotController : Node2D
 	}
 
 	public override void _Process(double delta)
-    {
+	{
 
-    }
+	}
 
 	private async void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
 	{
