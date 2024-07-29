@@ -4,6 +4,8 @@ using System.IO.Ports;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SlotController
 {
@@ -62,8 +64,16 @@ namespace SlotController
 
         void Recieved(string data)
         {
+            // pass data to MongoDB
             Task.Run(async () => await InsertOrUpdate(data));
             text.Text = data;
+
+            // execute game logic for UI stuff here
+            List<string> values = data.Split(",").ToList();
+            foreach(string str in values)
+            {
+                GD.Print(str);
+            }
         }
 
         static async Task InsertOrUpdate(string data)

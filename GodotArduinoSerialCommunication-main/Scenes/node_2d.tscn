@@ -11,5 +11,3 @@ offset_right = 1153.0
 offset_bottom = 654.0
 theme_override_font_sizes/normal_font_size = 80
 text = "hello"
-
-[node name="MongoDB" type="Node2D" parent="."]
