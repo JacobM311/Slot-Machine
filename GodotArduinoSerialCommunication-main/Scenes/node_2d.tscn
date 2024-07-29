@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bbt6ej8kljwj7"]
 
-[ext_resource type="Script" path="res://SlotController.cs" id="1_grtg8"]
+[ext_resource type="Script" path="res://Scripts/SlotController.cs" id="1_r7qwu"]
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("text")]
-script = ExtResource("1_grtg8")
+script = ExtResource("1_r7qwu")
 text = NodePath("RichTextLabel")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
