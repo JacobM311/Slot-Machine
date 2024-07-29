@@ -13,8 +13,7 @@ namespace SlotController
         [Export] RichTextLabel text;
         bool hasHeardFromArduino = false;
         float timer;
-
-        private static ObjectId _documentId; // Class-level variable to store the document _id
+        private static ObjectId _documentId = ObjectId.Empty; // Initialize with an empty ObjectId
 
         [Signal] public delegate void SerialDataReceiverEventHandler(string data);
 
@@ -31,11 +30,24 @@ namespace SlotController
             serialPort.Open();
             serialPort.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
             SerialDataReceiver += Recieved;
+
+            // Load the _id from the config file
+            var config = new ConfigFile();
+            var filePath = "res://UserData/UserData.cfg";
+
+            if (config.Load(filePath) == Error.Ok)
+            {
+                var documentIdString = config.GetValue("UserData", "document_id", "").ToString();
+                if (ObjectId.TryParse(documentIdString, out var documentId))
+                {
+                    _documentId = documentId;
+                }
+            }
         }
 
         public override void _Process(double delta)
         {
-            // Optional: you can put any repeated logic here
+            
         }
 
         private async void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -55,77 +67,68 @@ namespace SlotController
         }
 
         static async Task InsertOrUpdate(string data)
-{
-    string connectionString = "mongodb+srv://jacobmarshall9608:h20uaJnIIg6dpnSF@cluster0.7osdg5a.mongodb.net/";
-    string databaseName = "SlotMachine";
-    string collectionName = "data";
-
-    var client = new MongoClient(connectionString);
-
-    // Get a reference to the database
-    var database = client.GetDatabase(databaseName);
-
-    // Get a reference to the collection
-    var collection = database.GetCollection<BsonDocument>(collectionName);
-
-    // Check if the document ID has been set
-    if (_documentId == ObjectId.Empty)
-    {
-        // Create a new document with the initial data
-        var document = new BsonDocument { { "user_data", data } };
-
-        // Insert the document into the collection and get the generated _id
-        try
         {
-            await collection.InsertOneAsync(document);
-            _documentId = document["_id"].AsObjectId;
-            GD.Print("Document inserted successfully with _id: " + _documentId);
-        }
-        catch (Exception ex)
-        {
-            GD.Print($"Error inserting document: {ex.Message}");
-        }
-    }
-    else
-    {
-        // Update the existing document by appending new data
-        var filter = Builders<BsonDocument>.Filter.Eq("_id", _documentId);
-        
-        // Fetch the current document
-        var currentDocument = await collection.Find(filter).FirstOrDefaultAsync();
+            string connectionString = "mongodb+srv://jacobmarshall9608:h20uaJnIIg6dpnSF@cluster0.7osdg5a.mongodb.net/";
+            string databaseName = "SlotMachine";
+            string collectionName = "data";
 
-        if (currentDocument != null)
-        {
-            // Get the current user data and append the new data
-            var existingData = currentDocument["user_data"].AsString;
-            var updatedData = existingData + "\n" + data; // Use "\n" to separate entries, adjust as needed
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(databaseName);
+            var collection = database.GetCollection<BsonDocument>(collectionName);
 
-            // Create the update definition
-            var update = Builders<BsonDocument>.Update.Set("user_data", updatedData);
-
-            try
+            if (_documentId == ObjectId.Empty)
             {
-                var result = await collection.UpdateOneAsync(filter, update);
-                if (result.ModifiedCount > 0)
+                // Create a new document with the initial data
+                var document = new BsonDocument { { "user_data", data } };
+
+                // Insert the document into the collection and get the generated _id
+                await collection.InsertOneAsync(document);
+                _documentId = document["_id"].AsObjectId;
+
+                // Save _id to config file
+                var config = new ConfigFile();
+                var filePath = "res://UserData/UserData.cfg";
+                config.SetValue("UserData", "document_id", _documentId.ToString());
+                config.Save(filePath);
+
+                GD.Print("doc added and _id saved to config: " + _documentId);
+            }
+            else
+            {
+                // create filter to find the correct doc with the _id
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", _documentId);
+
+                // search the collection for the document with _id
+                var currentDocument = await collection.Find(filter).FirstOrDefaultAsync();
+
+                if (currentDocument != null)
                 {
-                    GD.Print("Document updated successfully.");
+                    // get the current user data as a string
+                    var existingData = currentDocument["user_data"].AsString;
+
+                    //  append the new user_data to the existing
+                    var updatedData = existingData + "\n" + data;
+
+                    // create the update thing for mongo to update user_data with
+                    var update = Builders<BsonDocument>.Update.Set("user_data", updatedData);
+
+                    // update the collection with the updated user_data at the correct doc using the _id filter
+                    await collection.UpdateOneAsync(filter, update);
+
                 }
                 else
                 {
-                    GD.Print("No document was updated.");
+                    // document wasn't found, create a new one with the existing _id
+                    var newDocument = new BsonDocument
+                    {
+                        { "_id", _documentId },
+                        { "user_data", data }
+                    };
+
+                    await collection.InsertOneAsync(newDocument);
+                    GD.Print("created doc with _id on file: " + _documentId);
                 }
             }
-            catch (Exception ex)
-            {
-                GD.Print($"Error updating document: {ex.Message}");
-            }
         }
-        else
-        {
-            GD.Print("Document not found.");
-        }
-    }
-}
-
     }
 }
