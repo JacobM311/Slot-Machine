@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbt6ej8kljwj7"]
+
+[ext_resource type="Script" path="res://Scripts/SlotController.cs" id="1_yxxv5"]
+[ext_resource type="Texture2D" uid="uid://demliqyt6vaw4" path="res://Images/Area51.png" id="2_k5jpe"]
+[ext_resource type="Texture2D" uid="uid://bgv8cj4y8lhdb" path="res://Images/UFO_2.png" id="3_wf6nw"]
+[ext_resource type="Texture2D" uid="uid://djq6ogoowhsh3" path="res://Images/Alien_2.png" id="4_b7cvb"]
+[ext_resource type="Texture2D" uid="uid://c1x0ulmaoexj2" path="res://Images/UFO.png" id="5_rw0bx"]
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("text")]
+script = ExtResource("1_yxxv5")
+text = NodePath("RichTextLabel")
+
+[node name="Area51" type="Sprite2D" parent="."]
+position = Vector2(572.5, 325)
+scale = Vector2(0.599479, 0.596296)
+texture = ExtResource("2_k5jpe")
+
+[node name="Ufo2" type="Sprite2D" parent="."]
+position = Vector2(458, -120)
+scale = Vector2(0.125, 0.109199)
+texture = ExtResource("3_wf6nw")
+
+[node name="Alien2" type="Sprite2D" parent="."]
+position = Vector2(104.5, 510)
+scale = Vector2(0.121479, 0.10182)
+texture = ExtResource("4_b7cvb")
+
+[node name="Alien3" type="Sprite2D" parent="."]
+position = Vector2(152, 406)
+scale = Vector2(0.121479, 0.10182)
+texture = ExtResource("4_b7cvb")
+
+[node name="Alien4" type="Sprite2D" parent="."]
+position = Vector2(66, 420)
+scale = Vector2(0.121479, 0.10182)
+texture = ExtResource("4_b7cvb")
+
+[node name="Ufo" type="Sprite2D" parent="."]
+position = Vector2(967, 146)
+scale = Vector2(0.12299, 0.13903)
+texture = ExtResource("5_rw0bx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 219.0
+offset_bottom = 97.0
+theme_override_font_sizes/normal_font_size = 80
+text = "hello"

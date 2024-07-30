@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="SlotMachine"
-run/main_scene="res://Scenes/menu.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [dotnet]
 

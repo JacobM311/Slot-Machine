@@ -6,6 +6,7 @@ using MongoDB.Driver;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace SlotController
 {
@@ -22,11 +23,22 @@ namespace SlotController
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
+			string portNameString = "";
+
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+			{
+				portNameString = "COM4";
+			}
+			else
+			{
+				portNameString = "/dev/cu.usbmodem34B7DA66137C2";
+			}
+
 			serialPort = new SerialPort
 			{
 				DtrEnable = true,
 				RtsEnable = true,
-				PortName = "COM4",
+				PortName = portNameString,
 				BaudRate = 9600 // make sure this is the same in Arduino as it is in Godot.
 			};
 			serialPort.Open();
