@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbt6ej8kljwj7"]
+[gd_scene load_steps=7 format=3 uid="uid://bbt6ej8kljwj7"]
 
 [ext_resource type="Script" path="res://Scripts/SlotController.cs" id="1_yxxv5"]
-[ext_resource type="Texture2D" uid="uid://demliqyt6vaw4" path="res://Images/Area51.png" id="2_k5jpe"]
+[ext_resource type="Texture2D" uid="uid://chbhksgt2376a" path="res://Images/BG1.png" id="2_ykdfe"]
+[ext_resource type="Texture2D" uid="uid://dk63yqramnmb8" path="res://Images/Area51Base.png" id="3_5sit2"]
 [ext_resource type="Texture2D" uid="uid://bgv8cj4y8lhdb" path="res://Images/UFO_2.png" id="3_wf6nw"]
 [ext_resource type="Texture2D" uid="uid://djq6ogoowhsh3" path="res://Images/Alien_2.png" id="4_b7cvb"]
 [ext_resource type="Texture2D" uid="uid://c1x0ulmaoexj2" path="res://Images/UFO.png" id="5_rw0bx"]
@@ -10,10 +11,15 @@
 script = ExtResource("1_yxxv5")
 text = NodePath("RichTextLabel")
 
-[node name="Area51" type="Sprite2D" parent="."]
-position = Vector2(572.5, 325)
-scale = Vector2(0.599479, 0.596296)
-texture = ExtResource("2_k5jpe")
+[node name="Bg1" type="Sprite2D" parent="."]
+position = Vector2(569.5, 319.5)
+scale = Vector2(0.604156, 0.609869)
+texture = ExtResource("2_ykdfe")
+
+[node name="Area51Base" type="Sprite2D" parent="."]
+position = Vector2(539, 434.5)
+scale = Vector2(0.660036, 0.635057)
+texture = ExtResource("3_5sit2")
 
 [node name="Ufo2" type="Sprite2D" parent="."]
 position = Vector2(458, -120)
