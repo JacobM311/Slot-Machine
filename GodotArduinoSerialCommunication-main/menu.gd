@@ -6,7 +6,7 @@ func _ready():
 	pass # Replace with functio
 
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/GameScene.tscn") 
+	get_tree().change_scene_to_file("res://Scenes/Main.tscn") 
 
 
 
