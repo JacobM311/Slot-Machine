@@ -1,5 +1,7 @@
 shader_type canvas_item;
 
+uniform float opacity : hint_range(0.0, 1.0) = 1.0;
+
 void fragment() {
 	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
 	vec2 uv = (FRAGCOORD.xy / iResolution.xy) - .5;
@@ -33,5 +35,5 @@ void fragment() {
 					(v1 + v3) * .3,
 					 v2) + smoothstep(0.2, .0, len) * .85 + smoothstep(.0, .6, v3) * .3;
 
-	COLOR=vec4(min(pow(abs(col), vec3(1.2)), 1.0), 1.0);
+	COLOR = vec4(min(pow(abs(col), vec3(1.2)), 1.0), opacity); // Modify this line
 }

@@ -1,6 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh1pkaufx87i6"]
-
-[ext_resource type="Script" path="res://Scene_transition.gd" id="1_xiay8"]
+[gd_scene load_steps=4 format=3 uid="uid://8104hy1eet7b"]
 
 [sub_resource type="Animation" id="Animation_xmjgu"]
 resource_name = "fade_to_black"
@@ -41,7 +39,6 @@ _data = {
 }
 
 [node name="Scene_transition" type="CanvasLayer"]
-script = ExtResource("1_xiay8")
 
 [node name="Dissolverect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
