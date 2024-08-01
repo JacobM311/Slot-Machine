@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://8ktcqnk4wssj"]
+[gd_scene load_steps=24 format=3 uid="uid://8ktcqnk4wssj"]
 
 [ext_resource type="Script" path="res://Scripts/SlotController.cs" id="1_r7qwu"]
 [ext_resource type="Texture2D" uid="uid://chbhksgt2376a" path="res://Images/BG1.png" id="2_mjedd"]
+[ext_resource type="Texture2D" uid="uid://dmcudwqowl66t" path="res://Images/Military man.png" id="3_sdc1n"]
 [ext_resource type="Shader" path="res://Shaders/menu.gdshader" id="3_vuorm"]
 [ext_resource type="Script" path="res://Scripts/AnimationController.cs" id="4_dj4j8"]
 [ext_resource type="Texture2D" uid="uid://dk63yqramnmb8" path="res://Images/Area51Base.png" id="5_fpywo"]
@@ -23,10 +24,10 @@ tracks/0/path = NodePath("Ufo:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.1, 1.6, 2.2, 2.3, 2.7, 4.2, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.1, 1.6, 2.2, 3.2, 4.2, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-200, 254), Vector2(99, 256), Vector2(213, 297), Vector2(340, 255), Vector2(364, 243), Vector2(498, 324), Vector2(544, 139), Vector2(-200, 254)]
+"values": [Vector2(-200, 254), Vector2(99, 256), Vector2(213, 297), Vector2(364, 243), Vector2(498, 324), Vector2(544, 139), Vector2(-200, 254)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -187,6 +188,30 @@ tracks/7/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Ufo2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(602, -134)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Bg1/MilitaryMan:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(61.8272, 139.856)]
+}
 
 [sub_resource type="Animation" id="Animation_yekdb"]
 resource_name = "TitleCardFade"
@@ -230,6 +255,31 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_rh8ed"]
 resource_name = "WinAnimation"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ufo2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9, 3.1, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(602, -134), Vector2(603, 256), Vector2(603, 256), Vector2(597.3, -109.631)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bg1/MilitaryMan:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.9, 3.1, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(61.8272, 139.856), Vector2(51.8012, -8.32478), Vector2(42.2763, -617.084)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_582v7"]
 _data = {
@@ -268,21 +318,25 @@ position = Vector2(576, 317)
 scale = Vector2(0.598442, 0.600617)
 texture = ExtResource("2_mjedd")
 
+[node name="MilitaryMan" type="Sprite2D" parent="Bg1"]
+position = Vector2(61.8272, 139.856)
+scale = Vector2(0.273754, 0.215125)
+texture = ExtResource("3_sdc1n")
+
 [node name="Area51Base" type="Sprite2D" parent="."]
-position = Vector2(546, 489)
+position = Vector2(586, 445)
 scale = Vector2(0.502713, 0.54023)
 texture = ExtResource("5_fpywo")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("slotController", "cpuParticles2D")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("slotController")]
 libraries = {
 "": SubResource("AnimationLibrary_582v7")
 }
 script = ExtResource("4_dj4j8")
 slotController = NodePath("..")
-cpuParticles2D = NodePath("../CPUParticles2D2")
 
 [node name="Ufo2" type="Sprite2D" parent="."]
-position = Vector2(530, -159)
+position = Vector2(602, -134)
 scale = Vector2(0.15, 0.158)
 texture = ExtResource("6_xhmg3")
 
