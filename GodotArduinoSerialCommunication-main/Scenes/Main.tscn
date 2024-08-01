@@ -23,10 +23,10 @@ tracks/0/path = NodePath("Ufo:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.1, 1.6, 2.2, 2.3, 3.3, 4, 5),
+"times": PackedFloat32Array(0, 1.1, 1.6, 2.2, 2.3, 2.7, 4.2, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-200, 254), Vector2(99, 256), Vector2(213, 297), Vector2(340, 255), Vector2(364, 243), Vector2(498, 324), Vector2(587, 296), Vector2(-200, 254)]
+"values": [Vector2(-200, 254), Vector2(99, 256), Vector2(213, 297), Vector2(340, 255), Vector2(364, 243), Vector2(498, 324), Vector2(544, 139), Vector2(-200, 254)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -47,10 +47,10 @@ tracks/2/path = NodePath("Missle:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3.5, 4, 5),
+"times": PackedFloat32Array(3.5, 4.2, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1071, 546), Vector2(698, 287), Vector2(1071, 546)]
+"values": [Vector2(1071, 546), Vector2(600, 113), Vector2(1071, 546)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -59,34 +59,34 @@ tracks/3/path = NodePath("Missle:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(4, 5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 4.2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CPUParticles2D2:visible")
+tracks/4/path = NodePath("Ufo:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(4, 4.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 4.2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Ufo:visible")
+tracks/5/path = NodePath("CPUParticles2D2:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(4, 5),
+"times": PackedFloat32Array(4.1, 4.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_fqjct"]
@@ -166,26 +166,26 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CPUParticles2D2:visible")
+tracks/6/path = NodePath("Ufo:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Ufo:visible")
+tracks/7/path = NodePath("CPUParticles2D2:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_yekdb"]
@@ -239,6 +239,12 @@ _data = {
 "WinAnimation": SubResource("Animation_rh8ed")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca55e"]
+shader = ExtResource("3_vuorm")
+shader_parameter/opacity = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gwe7p"]
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7xw3y"]
 blend_mode = 1
 particles_animation = true
@@ -254,18 +260,12 @@ max_value = 34.0
 _data = [Vector2(0.00344828, 3.91063), 0.0, 0.0, 0, 0, Vector2(0.265517, 1.89944), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca55e"]
-shader = ExtResource("3_vuorm")
-shader_parameter/opacity = 1.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gwe7p"]
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_r7qwu")
 
 [node name="Bg1" type="Sprite2D" parent="."]
-position = Vector2(573, 317)
-scale = Vector2(0.596883, 0.600617)
+position = Vector2(576, 317)
+scale = Vector2(0.598442, 0.600617)
 texture = ExtResource("2_mjedd")
 
 [node name="Area51Base" type="Sprite2D" parent="."]
@@ -273,15 +273,16 @@ position = Vector2(546, 489)
 scale = Vector2(0.502713, 0.54023)
 texture = ExtResource("5_fpywo")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("slotController")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("slotController", "cpuParticles2D")]
 libraries = {
 "": SubResource("AnimationLibrary_582v7")
 }
 script = ExtResource("4_dj4j8")
 slotController = NodePath("..")
+cpuParticles2D = NodePath("../CPUParticles2D2")
 
 [node name="Ufo2" type="Sprite2D" parent="."]
-position = Vector2(1273, 287)
+position = Vector2(530, -159)
 scale = Vector2(0.15, 0.158)
 texture = ExtResource("6_xhmg3")
 
@@ -290,26 +291,6 @@ visible = false
 position = Vector2(99, 256)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("7_xu4t2")
-
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_7xw3y")
-position = Vector2(622, 245)
-amount = 100
-lifetime = 2.0
-fixed_fps = 60
-texture = ExtResource("8_7wrw0")
-emission_shape = 1
-emission_sphere_radius = 66.07
-gravity = Vector2(0, 0)
-angle_min = -594.6
-angle_max = -120.8
-scale_amount_min = 2.0
-scale_amount_max = 3.0
-color = Color(0.942413, 0.386998, 0.228315, 1)
-color_ramp = SubResource("Gradient_rgiiv")
-anim_speed_min = 1.0
-anim_speed_max = 2.0
-anim_speed_curve = SubResource("Curve_tx6c1")
 
 [node name="RearLeg" type="Sprite2D" parent="."]
 position = Vector2(1066.75, 613.592)
@@ -353,3 +334,22 @@ theme_override_font_sizes/font_size = 100
 text = "Area51"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_7xw3y")
+position = Vector2(537, 83)
+amount = 100
+fixed_fps = 120
+texture = ExtResource("8_7wrw0")
+emission_shape = 1
+emission_sphere_radius = 66.07
+gravity = Vector2(0, 0)
+angle_min = -594.6
+angle_max = -120.8
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+color = Color(0.942413, 0.386998, 0.228315, 1)
+color_ramp = SubResource("Gradient_rgiiv")
+anim_speed_min = 1.0
+anim_speed_max = 2.0
+anim_speed_curve = SubResource("Curve_tx6c1")

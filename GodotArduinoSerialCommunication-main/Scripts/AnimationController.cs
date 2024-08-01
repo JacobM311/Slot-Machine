@@ -7,10 +7,12 @@ using System.Linq;
 public partial class AnimationController : AnimationPlayer
 {
 	[Export] SlotController.SlotController slotController;
+	[Export] CpuParticles2D cpuParticles2D;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		cpuParticles2D.Visible = false;
 		slotController.SerialDataReceiver += DataReceived;
 		Play("TitleCardFade");
 	}
