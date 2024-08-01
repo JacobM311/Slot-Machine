@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bbt6ej8kljwj7"]
+[gd_scene load_steps=23 format=3 uid="uid://8ktcqnk4wssj"]
 
 [ext_resource type="Script" path="res://Scripts/SlotController.cs" id="1_r7qwu"]
 [ext_resource type="Texture2D" uid="uid://chbhksgt2376a" path="res://Images/BG1.png" id="2_mjedd"]
@@ -8,26 +8,85 @@
 [ext_resource type="Texture2D" uid="uid://bgv8cj4y8lhdb" path="res://Images/UFO_2.png" id="6_xhmg3"]
 [ext_resource type="Texture2D" uid="uid://c1x0ulmaoexj2" path="res://Images/UFO.png" id="7_xu4t2"]
 [ext_resource type="Texture2D" uid="uid://bem76c523x8j" path="res://Images/Explosion_Sheet.png" id="8_7wrw0"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca55e"]
-shader = ExtResource("3_vuorm")
-shader_parameter/opacity = 1.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gwe7p"]
+[ext_resource type="Texture2D" uid="uid://dmiyg76bsq8d8" path="res://Images/rear leg.png" id="9_1xwbf"]
+[ext_resource type="Texture2D" uid="uid://3hht16q2xcmo" path="res://Images/missle.png" id="10_ntl60"]
+[ext_resource type="Texture2D" uid="uid://ktwwfwfi8ral" path="res://Images/Turret Head.png" id="11_pyegl"]
+[ext_resource type="Texture2D" uid="uid://c5gmprt5dmdbp" path="res://Images/front leg.png" id="12_js48t"]
 
 [sub_resource type="Animation" id="Animation_v772n"]
 resource_name = "LoseAnimation"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Ufo2:position")
+tracks/0/path = NodePath("Ufo:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 1.1, 1.6, 2.2, 2.3, 3.3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": []
+"values": [Vector2(-200, 254), Vector2(99, 256), Vector2(213, 297), Vector2(340, 255), Vector2(364, 243), Vector2(498, 324), Vector2(587, 296), Vector2(-200, 254)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TurretHead:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.8, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.145801, 0.0676761, -0.145801]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Missle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.5, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1071, 546), Vector2(698, 287), Vector2(1071, 546)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Missle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4, 4.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Ufo:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_fqjct"]
@@ -55,6 +114,78 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ufo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(99, 256)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TurretHead:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.145801]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Missle:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1071, 546)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Missle:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CPUParticles2D2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Ufo:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_yekdb"]
@@ -115,16 +246,19 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = true
 
-[sub_resource type="Gradient" id="Gradient_hk0dm"]
-offsets = PackedFloat32Array(0.117647, 0.470588, 0.647059, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 1, 0.396078, 0.329412, 0.47451, 0, 0, 0, 1)
-metadata/_snap_enabled = true
-metadata/_snap_count = 17
+[sub_resource type="Gradient" id="Gradient_rgiiv"]
+offsets = PackedFloat32Array(0.35249, 1)
 
 [sub_resource type="Curve" id="Curve_tx6c1"]
 max_value = 34.0
 _data = [Vector2(0.00344828, 3.91063), 0.0, 0.0, 0, 0, Vector2(0.265517, 1.89944), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca55e"]
+shader = ExtResource("3_vuorm")
+shader_parameter/opacity = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gwe7p"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_r7qwu")
@@ -138,6 +272,67 @@ texture = ExtResource("2_mjedd")
 position = Vector2(546, 489)
 scale = Vector2(0.502713, 0.54023)
 texture = ExtResource("5_fpywo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("slotController")]
+libraries = {
+"": SubResource("AnimationLibrary_582v7")
+}
+script = ExtResource("4_dj4j8")
+slotController = NodePath("..")
+
+[node name="Ufo2" type="Sprite2D" parent="."]
+position = Vector2(1273, 287)
+scale = Vector2(0.15, 0.158)
+texture = ExtResource("6_xhmg3")
+
+[node name="Ufo" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(99, 256)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("7_xu4t2")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_7xw3y")
+position = Vector2(622, 245)
+amount = 100
+lifetime = 2.0
+fixed_fps = 60
+texture = ExtResource("8_7wrw0")
+emission_shape = 1
+emission_sphere_radius = 66.07
+gravity = Vector2(0, 0)
+angle_min = -594.6
+angle_max = -120.8
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+color = Color(0.942413, 0.386998, 0.228315, 1)
+color_ramp = SubResource("Gradient_rgiiv")
+anim_speed_min = 1.0
+anim_speed_max = 2.0
+anim_speed_curve = SubResource("Curve_tx6c1")
+
+[node name="RearLeg" type="Sprite2D" parent="."]
+position = Vector2(1066.75, 613.592)
+scale = Vector2(0.25, 0.184559)
+texture = ExtResource("9_1xwbf")
+
+[node name="Missle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1071, 546)
+rotation = -0.850418
+scale = Vector2(0.149515, 0.150361)
+texture = ExtResource("10_ntl60")
+
+[node name="TurretHead" type="Sprite2D" parent="."]
+position = Vector2(1063.85, 564.842)
+rotation = -0.145801
+scale = Vector2(0.220399, 0.20443)
+texture = ExtResource("11_pyegl")
+
+[node name="FrontLeg" type="Sprite2D" parent="."]
+position = Vector2(1074.75, 594.342)
+scale = Vector2(0.272727, 0.194867)
+texture = ExtResource("12_js48t")
 
 [node name="Bg2" type="Sprite2D" parent="."]
 visible = false
@@ -158,40 +353,3 @@ theme_override_font_sizes/font_size = 100
 text = "Area51"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("slotController")]
-libraries = {
-"": SubResource("AnimationLibrary_582v7")
-}
-script = ExtResource("4_dj4j8")
-slotController = NodePath("..")
-
-[node name="Ufo2" type="Sprite2D" parent="."]
-position = Vector2(1481, 276)
-scale = Vector2(0.15, 0.158)
-texture = ExtResource("6_xhmg3")
-
-[node name="Ufo" type="Sprite2D" parent="."]
-position = Vector2(-204, 185)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("7_xu4t2")
-
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_7xw3y")
-position = Vector2(1275, 768)
-amount = 100
-lifetime = 2.0
-fixed_fps = 60
-texture = ExtResource("8_7wrw0")
-emission_shape = 1
-emission_sphere_radius = 66.07
-gravity = Vector2(0, 0)
-angle_min = -594.6
-angle_max = -120.8
-scale_amount_min = 2.0
-scale_amount_max = 3.0
-color = Color(0.647059, 0.313726, 0.196078, 1)
-color_ramp = SubResource("Gradient_hk0dm")
-anim_speed_min = 1.0
-anim_speed_max = 2.0
-anim_speed_curve = SubResource("Curve_tx6c1")
