@@ -212,6 +212,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(61.8272, 139.856)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Bg1/MilitaryMan:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_yekdb"]
 resource_name = "TitleCardFade"
@@ -255,7 +267,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_rh8ed"]
 resource_name = "WinAnimation"
-length = 8.0
+length = 6.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -263,7 +275,7 @@ tracks/0/path = NodePath("Ufo2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.9, 3.1, 5),
+"times": PackedFloat32Array(0, 1.6, 2.8, 4.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(602, -134), Vector2(603, 256), Vector2(603, 256), Vector2(597.3, -109.631)]
@@ -275,10 +287,22 @@ tracks/1/path = NodePath("Bg1/MilitaryMan:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.9, 3.1, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(1.6, 2.8, 4.3, 5.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(61.8272, 139.856), Vector2(51.8012, -8.32478), Vector2(42.2763, -617.084)]
+"values": [Vector2(61.8272, 139.856), Vector2(51.8012, -8.32478), Vector2(42.2763, -617.084), Vector2(61.8272, 139.856)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bg1/MilitaryMan:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.3, 5.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_582v7"]
@@ -310,8 +334,9 @@ max_value = 34.0
 _data = [Vector2(0.00344828, 3.91063), 0.0, 0.0, 0, 0, Vector2(0.265517, 1.89944), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("text")]
 script = ExtResource("1_r7qwu")
+text = NodePath("RichTextLabel")
 
 [node name="Bg1" type="Sprite2D" parent="."]
 position = Vector2(576, 317)
@@ -319,6 +344,7 @@ scale = Vector2(0.598442, 0.600617)
 texture = ExtResource("2_mjedd")
 
 [node name="MilitaryMan" type="Sprite2D" parent="Bg1"]
+visible = false
 position = Vector2(61.8272, 139.856)
 scale = Vector2(0.273754, 0.215125)
 texture = ExtResource("3_sdc1n")
@@ -332,6 +358,7 @@ texture = ExtResource("5_fpywo")
 libraries = {
 "": SubResource("AnimationLibrary_582v7")
 }
+speed_scale = 1.143
 script = ExtResource("4_dj4j8")
 slotController = NodePath("..")
 
@@ -407,3 +434,7 @@ color_ramp = SubResource("Gradient_rgiiv")
 anim_speed_min = 1.0
 anim_speed_max = 2.0
 anim_speed_curve = SubResource("Curve_tx6c1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

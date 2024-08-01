@@ -82,6 +82,45 @@ namespace SlotController
 
 			// execute game logic for UI stuff here
 			List<string> values = data.Split(",").ToList();
+			// checks if the reels are all matching
+			bool allSame = values.All(str => str == values[0]);
+			// if the reels all match do this switch case
+			if (allSame)
+			{
+				switch (values[1])
+				{
+					case "1":
+						int win = 10;
+						text.Text += text.Text + win.ToString();
+						break;
+
+					case "2":
+						int win = 10;
+						text.Text += text.Text + win.ToString();
+						break;
+
+					case "3":
+						int win = 10;
+						text.Text += text.Text + win.ToString();
+						break;
+					
+					case "4":
+						int win = 10;
+						text.Text += text.Text + win.ToString();
+						break;
+
+					case "5":
+						int win = 10;
+						text.Text += text.Text + win.ToString();
+						break;
+
+					case "6":
+						int win = 10;
+						text.Text += text.Text + win.ToString();
+						break;
+				}
+			}
+
 			foreach(string str in values)
 			{
 				GD.Print(str);
