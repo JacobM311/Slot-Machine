@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cynu3uauvclm6"]
+[gd_scene load_steps=9 format=3 uid="uid://cynu3uauvclm6"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_1lfjr"]
 [ext_resource type="Shader" path="res://Shaders/menu.gdshader" id="2_aj3u2"]
 [ext_resource type="Texture2D" uid="uid://dk6k08tdmhkda" path="res://Images/image.png" id="3_ctgpw"]
+[ext_resource type="Shader" path="res://Scenes/TitleCard.gdshader" id="4_s345e"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_dxtts"]
 script/source = "shader_type canvas_item;
@@ -50,6 +51,10 @@ script = SubResource("CSharpScript_dxtts")
 shader = ExtResource("2_aj3u2")
 shader_parameter/opacity = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6co6"]
+render_priority = 0
+shader = ExtResource("4_s345e")
+
 [node name="Menu" type="Control"]
 material = SubResource("ShaderMaterial_gj554")
 layout_mode = 3
@@ -82,3 +87,26 @@ anchor_bottom = 1.0
 offset_top = -101.0
 offset_right = 124.0
 grow_vertical = 0
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 2
+offset_left = 377.0
+offset_top = 114.0
+offset_right = 796.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Area 51: Aliens invade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+material = SubResource("ShaderMaterial_c6co6")
+layout_mode = 0
+offset_left = 532.0
+offset_top = 192.0
+offset_right = 562.0
+offset_bottom = 281.0
+texture = ExtResource("3_ctgpw")
+expand_mode = 1
+stretch_mode = 1
