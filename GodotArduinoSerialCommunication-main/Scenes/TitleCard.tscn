@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cynu3uauvclm6"]
+[gd_scene load_steps=14 format=3 uid="uid://cynu3uauvclm6"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_1lfjr"]
 [ext_resource type="Shader" path="res://Shaders/menu.gdshader" id="2_aj3u2"]
 [ext_resource type="Texture2D" uid="uid://dk6k08tdmhkda" path="res://Images/image.png" id="3_ctgpw"]
-[ext_resource type="Shader" path="res://Scenes/TitleCard.gdshader" id="4_s345e"]
+[ext_resource type="Shader" path="res://Images/TitleCard.gdshader" id="4_s345e"]
+[ext_resource type="Texture2D" uid="uid://d3sghqvhvcxak" path="res://Scenes/image.png" id="5_rjs6q"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_dxtts"]
 script/source = "shader_type canvas_item;
@@ -51,6 +52,155 @@ script = SubResource("CSharpScript_dxtts")
 shader = ExtResource("2_aj3u2")
 shader_parameter/opacity = 1.0
 
+[sub_resource type="Animation" id="Animation_6eb1j"]
+resource_name = "fade_to_black"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect2/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2/TextureRect:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect2/Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect2/Label:theme_override_colors/font_shadow_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect2/Label2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(5, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_23o1e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2/TextureRect:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect2/Label:theme_override_colors/font_shadow_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2/Label2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ko62g"]
+_data = {
+"RESET": SubResource("Animation_23o1e"),
+"fade_to_black": SubResource("Animation_6eb1j")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xukuh"]
+render_priority = 0
+shader = ExtResource("4_s345e")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c6co6"]
 render_priority = 0
 shader = ExtResource("4_s345e")
@@ -88,25 +238,53 @@ offset_top = -101.0
 offset_right = 124.0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+libraries = {
+"": SubResource("AnimationLibrary_ko62g")
+}
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
+self_modulate = Color(0, 0, 0, 0)
+material = SubResource("ShaderMaterial_xukuh")
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("5_rjs6q")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/TextureRect2"]
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_c6co6")
+layout_mode = 0
+offset_left = 571.0
+offset_top = 276.0
+offset_right = 601.0
+offset_bottom = 365.0
+texture = ExtResource("5_rjs6q")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect/TextureRect2"]
 layout_mode = 2
 offset_left = 377.0
 offset_top = 114.0
 offset_right = 796.0
 offset_bottom = 209.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "Area 51: Aliens invade"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect"]
-material = SubResource("ShaderMaterial_c6co6")
+[node name="Label2" type="Label" parent="TextureRect/TextureRect2"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 532.0
-offset_top = 192.0
-offset_right = 562.0
-offset_bottom = 281.0
-texture = ExtResource("3_ctgpw")
-expand_mode = 1
-stretch_mode = 1
+offset_left = 378.0
+offset_top = 125.0
+offset_right = 795.0
+offset_bottom = 203.0
+theme_override_font_sizes/font_size = 40
+text = "By (Placeholder)"
+horizontal_alignment = 1
+vertical_alignment = 1
