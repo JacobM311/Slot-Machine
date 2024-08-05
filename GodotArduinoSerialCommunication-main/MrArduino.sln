@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrArduino", "MrArduino.csproj", "{6DFBE6DD-EE3B-406C-A54C-4349896F26BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrArduino", "MrArduino.csproj", "{46B3C3A2-4807-4D1B-AB94-697634E27935}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6DFBE6DD-EE3B-406C-A54C-4349896F26BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6DFBE6DD-EE3B-406C-A54C-4349896F26BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6DFBE6DD-EE3B-406C-A54C-4349896F26BF}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{6DFBE6DD-EE3B-406C-A54C-4349896F26BF}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{6DFBE6DD-EE3B-406C-A54C-4349896F26BF}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{6DFBE6DD-EE3B-406C-A54C-4349896F26BF}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{46B3C3A2-4807-4D1B-AB94-697634E27935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46B3C3A2-4807-4D1B-AB94-697634E27935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46B3C3A2-4807-4D1B-AB94-697634E27935}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{46B3C3A2-4807-4D1B-AB94-697634E27935}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{46B3C3A2-4807-4D1B-AB94-697634E27935}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{46B3C3A2-4807-4D1B-AB94-697634E27935}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal

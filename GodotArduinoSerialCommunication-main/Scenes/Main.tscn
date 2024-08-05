@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://8ktcqnk4wssj"]
+[gd_scene load_steps=27 format=3 uid="uid://8ktcqnk4wssj"]
 
 [ext_resource type="Script" path="res://Scripts/SlotController.cs" id="1_r7qwu"]
 [ext_resource type="Texture2D" uid="uid://chbhksgt2376a" path="res://Images/BG1.png" id="2_mjedd"]
@@ -13,10 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://3hht16q2xcmo" path="res://Images/missle.png" id="10_ntl60"]
 [ext_resource type="Texture2D" uid="uid://ktwwfwfi8ral" path="res://Images/Turret Head.png" id="11_pyegl"]
 [ext_resource type="Texture2D" uid="uid://c5gmprt5dmdbp" path="res://Images/front leg.png" id="12_js48t"]
+[ext_resource type="FontFile" uid="uid://b60aeq1a8006l" path="res://Fonts/SCI FI BOX.ttf" id="13_a3dn5"]
+[ext_resource type="FontFile" uid="uid://t6w3of5gp1xl" path="res://Fonts/SPACEMAN.TTF" id="15_aj15m"]
 
 [sub_resource type="Animation" id="Animation_v772n"]
 resource_name = "LoseAnimation"
-length = 5.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -80,14 +82,14 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CPUParticles2D2:visible")
+tracks/5/path = NodePath("CPUParticles2D2:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(4.1, 4.5),
+"times": PackedFloat32Array(0, 4.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_fqjct"]
@@ -179,50 +181,50 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CPUParticles2D2:visible")
+tracks/7/path = NodePath("Ufo2:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(602, -134)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Ufo2:position")
+tracks/8/path = NodePath("Bg1/MilitaryMan:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(602, -134)]
+"values": [Vector2(61.8272, 139.856)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Bg1/MilitaryMan:position")
+tracks/9/path = NodePath("Bg1/MilitaryMan:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(61.8272, 139.856)]
+"update": 1,
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Bg1/MilitaryMan:visible")
+tracks/10/path = NodePath("CPUParticles2D2:emitting")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_yekdb"]
@@ -313,12 +315,6 @@ _data = {
 "WinAnimation": SubResource("Animation_rh8ed")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca55e"]
-shader = ExtResource("3_vuorm")
-shader_parameter/opacity = 1.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gwe7p"]
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7xw3y"]
 blend_mode = 1
 particles_animation = true
@@ -334,9 +330,17 @@ max_value = 34.0
 _data = [Vector2(0.00344828, 3.91063), 0.0, 0.0, 0, 0, Vector2(0.265517, 1.89944), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("text")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca55e"]
+shader = ExtResource("3_vuorm")
+shader_parameter/opacity = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gwe7p"]
+
+[sub_resource type="Theme" id="Theme_n2ysw"]
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("winningsText")]
 script = ExtResource("1_r7qwu")
-text = NodePath("RichTextLabel")
+winningsText = NodePath("winningsInt")
 
 [node name="Bg1" type="Sprite2D" parent="."]
 position = Vector2(576, 317)
@@ -354,13 +358,14 @@ position = Vector2(586, 445)
 scale = Vector2(0.502713, 0.54023)
 texture = ExtResource("5_fpywo")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("slotController")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("slotController", "cpuParticles2D")]
 libraries = {
 "": SubResource("AnimationLibrary_582v7")
 }
 speed_scale = 1.143
 script = ExtResource("4_dj4j8")
 slotController = NodePath("..")
+cpuParticles2D = NodePath("../CPUParticles2D2")
 
 [node name="Ufo2" type="Sprite2D" parent="."]
 position = Vector2(602, -134)
@@ -396,30 +401,13 @@ position = Vector2(1074.75, 594.342)
 scale = Vector2(0.272727, 0.194867)
 texture = ExtResource("12_js48t")
 
-[node name="Bg2" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_ca55e")
-position = Vector2(574, 322.5)
-scale = Vector2(0.596364, 0.498843)
-texture = ExtResource("2_mjedd")
-
-[node name="Label" type="Label" parent="."]
-visible = false
-material = SubResource("CanvasItemMaterial_gwe7p")
-offset_left = 350.0
-offset_top = 232.0
-offset_right = 781.0
-offset_bottom = 369.0
-theme_override_colors/font_color = Color(0.886275, 0, 0, 1)
-theme_override_font_sizes/font_size = 100
-text = "Area51"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_7xw3y")
-position = Vector2(537, 83)
+position = Vector2(571, 105)
 amount = 100
+lifetime = 0.8
+one_shot = true
+preprocess = 1.0
 fixed_fps = 120
 texture = ExtResource("8_7wrw0")
 emission_shape = 1
@@ -435,6 +423,62 @@ anim_speed_min = 1.0
 anim_speed_max = 2.0
 anim_speed_curve = SubResource("Curve_tx6c1")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Bet" type="RichTextLabel" parent="."]
+offset_left = 8.0
+offset_top = 580.0
+offset_right = 211.0
+offset_bottom = 635.0
+scale = Vector2(0.720003, 1.12211)
+theme_override_fonts/normal_font = ExtResource("15_aj15m")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Bet: 5
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Winnings" type="RichTextLabel" parent="."]
+offset_left = 340.0
+offset_top = 571.0
+offset_right = 647.0
+offset_bottom = 626.0
+scale = Vector2(1.12, 1.24)
+theme_override_fonts/normal_font = ExtResource("15_aj15m")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Winnings:
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Bg2" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ca55e")
+position = Vector2(578, 322.5)
+scale = Vector2(0.60052, 0.498843)
+texture = ExtResource("2_mjedd")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_gwe7p")
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 1150.0
+offset_bottom = 648.0
+theme = SubResource("Theme_n2ysw")
+theme_override_colors/font_color = Color(0.886275, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_a3dn5")
+theme_override_font_sizes/font_size = 100
+text = "Area51"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="winningsInt" type="RichTextLabel" parent="."]
+offset_left = 692.0
+offset_top = 573.0
+offset_right = 941.0
+offset_bottom = 639.0
+theme_override_fonts/normal_font = ExtResource("15_aj15m")
+theme_override_font_sizes/normal_font_size = 50
